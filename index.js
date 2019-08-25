@@ -5,7 +5,9 @@ require('dotenv').config();
 
 const start = async () => {
     try {
-        mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
+        mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true, useCreateIndex: true
+        });
         await fastify.listen(process.env.PORT);
         fastify.log.info(`server listening on ${fastify.server.address().port}`);
     } catch (err) {
