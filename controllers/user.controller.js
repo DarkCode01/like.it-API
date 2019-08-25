@@ -58,12 +58,12 @@ exports.getUserByNickname = async (req, reply) => {
     }
 }
 
-exports.updateUser = (req, reply) => {
+exports.updateUser = async (req, reply) => {
     try {
         const { _id } = req.body;
         const { fields } = req.body;
 
-        const result = User.update(
+        const result = await User.update(
             { _id: _id },
             fields
         );
@@ -82,11 +82,11 @@ exports.updateUser = (req, reply) => {
     }
 }
 
-exports.desactivateUser = (req, reply) => {
+exports.desactivateUser = async (req, reply) => {
     try {
         const { _id } = req.body;
 
-        const result = User.update(
+        const result = await User.update(
             { _id: _id },
             { active: false }
         );

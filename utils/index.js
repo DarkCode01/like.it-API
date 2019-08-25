@@ -18,3 +18,7 @@ exports.gravatar = email => {
 
     return `${url}/${hash.toString()}?d=retro`;
 }
+
+exports.validatePassword = (password, hash) => {
+    return bcrypt.compareSync(password, hash);
+}
