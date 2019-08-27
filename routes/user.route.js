@@ -1,15 +1,20 @@
+const { verifyToken } = require('../middlewares/auth');
 const controller = require('../controllers/user.controller');
+const schemas = require('../schemas/user.schema');
+
 
 const routes = [
     {
         method: 'GET',
         url: '/api/users/@:nickname',
-        handler: controller.getUserByNickname
+        handler: controller.getUserByNickname,
+        schema: schemas.getUserByNickname
     },
     {
         method: 'GET',
         url: '/api/users',
-        handler: controller.getUsers
+        handler: controller.getUsers,
+        schema: schemas.getUsers
     },
     {
         method: 'POST',
@@ -19,12 +24,14 @@ const routes = [
     {
         method: 'PUT',
         url: '/api/users',
-        handler: controller.updateUser
+        handler: controller.updateUser,
+        onRequest: verifyToken
     },
     {
         method: 'DELETE',
         url: '/api/users',
-        handler: controller.desactivateUser
+        handler: controller.desactivateUser,
+        onRequest: verifyToken
     }
 ]
 

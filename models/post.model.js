@@ -6,7 +6,7 @@ const Post = mongoose.Schema({
         required: false,
         default: "🥰..."
     },
-    likes: [ mongoose.ObjectId ]
+    uniconrs: [ mongoose.ObjectId ]
 });
 
 module.exports = mongoose.model('Post', Post);
