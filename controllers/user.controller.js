@@ -3,7 +3,7 @@ const User = require('../models/user.model');
 const { userFilter } = require('../helpers/userFilter');
 
 
-exports.addUser = async (req, resply) => {
+exports.addUser = async (req, reply) => {
     try {
         const user = new User(req.body);
         
