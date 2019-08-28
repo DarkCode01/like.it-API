@@ -3,11 +3,12 @@ const jwt = require('jsonwebtoken');
 exports.verifyToken = (req, reply, done) => {
     try {
         const payload = jwt.verify(
-            req.headers.authorization,
+            req.headers.authorization.split(' ')[1],
             process.env.SECRET
         );
 
         if (payload) {
+            req.user = payload;
             done();
         }
     } catch(err) {
