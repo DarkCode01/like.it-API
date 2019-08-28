@@ -1,3 +1,5 @@
+const { ErrorSchema } = require('../config/schemas.config');
+
 exports.getToken = {
     $id: 'token',
     tags: ['Token Authorization'],
@@ -19,23 +21,7 @@ exports.getToken = {
                 access: { type: 'string' }
             }
         },
-        403: {
-            type: 'object',
-            description: 'Response when token is invalid.',
-            properties: {
-                statusCode: { type: 'string' },
-                error: { type: 'string' },
-                message: { type: 'string' }
-            }
-        },
-        '5xx': {
-            type: 'object',
-            description: 'Return type and short description of error.',
-            properties: {
-                statusCode: { type: 'string' },
-                error: { type: 'string' },
-                message: { type: 'string' }
-            }
-        }
+        403: ErrorSchema,
+        '5xx': ErrorSchema
     }
 }

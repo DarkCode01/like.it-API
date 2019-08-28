@@ -21,3 +21,12 @@ exports.Post = {
         }
     }
 }
+
+exports.ErrorSchema = {
+    description: 'Body of response error.',
+    properties: {
+        statusCode: { type: 'string' },
+        error: { type: 'string' },
+        message: { type: 'string' }
+    }
+}

@@ -19,18 +19,21 @@ const routes = [
     {
         method: 'POST',
         url: '/api/users',
-        handler: controller.addUser
+        handler: controller.addUser,
+        schema: schemas.addUser
     },
     {
         method: 'PUT',
         url: '/api/users',
         handler: controller.updateUser,
+        schema: schemas.updateUser,
         onRequest: verifyToken
     },
     {
         method: 'DELETE',
         url: '/api/users',
         handler: controller.desactivateUser,
+        schema: schemas.desactivateUser,
         onRequest: verifyToken
     }
 ]

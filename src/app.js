@@ -1,5 +1,7 @@
 const fastify = require('fastify')({
-    logger: true
+    logger: {
+        level: 'trace'
+    }
 });
 const { verifyToken } = require('../middlewares/auth');
 const swaggerConfig = require('../config/swagger.config');
